@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package counter;
+
+message CounterRequest{
+	int32 number = 1;
+}
+
+message CounterResponse{
+	int32 result = 1;
+}
+
+service CounterService{
+	// server stream
+	rpc counterUntil(CounterRequest) returns (stream CounterResponse);
+}

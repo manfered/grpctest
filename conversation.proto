@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package conversation;
+
+message ConversationRequest {
+	string textMessage = 1;
+}
+
+message ConversationResponse{
+	string textResult = 1;
+}
+
+service ConversationService{
+	// bidi 
+	rpc HavingConversation(stream ConversationRequest) returns (stream ConversationResponse) {}
+}

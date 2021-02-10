@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package uploader;
+
+message FileuploadChunks {
+	int32 chunkNumber = 1;
+	bytes chunkData = 2;
+}
+
+message UploadRequest{
+	FileuploadChunks fileuploadChunks = 1;
+}
+
+message UploadResponse{
+	string result = 1;
+}
+
+service UploadService{
+	// client stream
+	rpc Upload(stream UploadRequest) returns (UploadResponse) {}
+}
